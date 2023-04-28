@@ -26,7 +26,16 @@ body, #root {
 .board {
     position: absolute;
     top: 50%;
-    transform: translate(1000%, -700%);
+    transform: translate(600%, -700%);
+    padding: 10px;
+}
+
+
+
+.profile {
+    position: absolute;
+    top: 50%;
+    transform: translate(600%, -100%);
     padding: 10px;
 }
 

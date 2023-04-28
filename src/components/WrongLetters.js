@@ -1,7 +1,7 @@
 import React from 'react'
 
 const WrongLetters = ({ wrongLetters }) => {
-    console.log(wrongLetters);
+    //console.log(wrongLetters);
     return (
         <div className="wrong-letters-container">
         <div>

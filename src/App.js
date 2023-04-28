@@ -22,6 +22,7 @@ function App() {
   const [login, setLogin] = useState(false);
   const [mode, setMode] = useState(false);
   const [potentialWord, setPotentialWord] = useState("");
+  const [objList, setObjList] = useState([]);
 
   useEffect(() => {
     const handleKeydown = event => {
@@ -48,7 +49,12 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeydown);
   }, [correctLetters, wrongLetters, playable]);
 
+
+
   function playAgain() {
+    if (checkWin(correctLetters, wrongLetters, selectedWord) === 'win') {
+        updateScore();
+    }
     setPlayable(true);
 
     // Empty Arrays
@@ -68,8 +74,32 @@ function App() {
   }
 
   function logIn() {
+    let found = false;
+    
+    objList.forEach(function(entry) {
+        if (entry.name === user) {
+            found = true;
+        }
+    }) 
+    console.log(objList);
+    if (!found) {
+        objList.push({name: user, score: 0});
+        window.localStorage.setItem("Users", JSON.stringify(objList));
+        const newObjList = objList;
+        setObjList(newObjList);
+    }
     playAgain();
     setLogin(true);
+    //console.log(objList);
+  }
+
+  function updateScore() {
+    objList.forEach(function(entry) {
+        if (entry.name === user) {
+            entry.score = parseInt(entry.score) + 1;
+            console.log(entry.score);
+        }
+    }) 
   }
 
   function normalMode() {
