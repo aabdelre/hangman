@@ -1,10 +1,11 @@
 import React from 'react'
 
-export const Figure = () => {
-    const errors = 0; //Errors should be calculated
+const Figure = ({ wrongLetters }) => {
+  const errors = wrongLetters.length
+
   return (
     <svg height="250" width="200" className="figure-container">
-      {/* <!-- Rod --> */} {/*These are comments in HTML Surround them by to get neglected in React*/}
+      {/* <!-- Rod --> */}
       <line x1="60" y1="20" x2="140" y2="20" />
       <line x1="140" y1="20" x2="140" y2="50" />
       <line x1="60" y1="20" x2="60" y2="230" />
@@ -35,5 +36,5 @@ export const Figure = () => {
     </svg>
   )
 }
-//This line exports the file as Figure (needed to be imported successfully in App.js)
+
 export default Figure
