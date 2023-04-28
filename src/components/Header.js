@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Header() {
+function Header({ user }) {
   return (
     <>
-        <h1> Hangman </h1>
+        <h1> Welcome, {user}! </h1>
         <p> Find the hidden word - Enter a letter! </p>
     </>
   )

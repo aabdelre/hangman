@@ -17,6 +17,8 @@ function App() {
   const [correctLetters, setCorrectLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
   const [showNotification, setShowNotification] = useState(false);
+  const [user, setUser] = useState("");
+  const [login, setLogin] = useState(false);
 
   useEffect(() => {
     const handleKeydown = event => {
@@ -54,17 +56,42 @@ function App() {
     selectedWord = words[random];
   }
 
+  function signOut() {
+    playAgain();
+    setLogin(false);
+  }
+
+  function logIn() {
+    playAgain();
+    setLogin(true);
+  }
+
   return (
-    <>
-      <Header />
-      <div className="game-container">
+    <div> {login ? (<><Header user={user}/>
+    <div className="game-container">
         <Figure wrongLetters={wrongLetters} />
         <WrongLetters wrongLetters={wrongLetters} />
         <Word selectedWord={selectedWord} correctLetters={correctLetters} />
-      </div>
-      <Popup correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} />
-      <Notification showNotification={showNotification} />
-    </>
+    </div>
+    <button className="signout-button" onClick={signOut}> Sign Out </button>
+    <Popup correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} />
+    <Notification showNotification={showNotification} /></>) : (<>
+        <div className="login">
+					<div className="auth-container"> 
+						<h4>Enter your Username!</h4>
+						<div className="auth-container-box">
+							<form>
+								<input type="text" className="username" onChange={e => setUser(e.target.value)} value={user}></input>
+							</form>
+							<div className="auth-options">
+								<button className="logbutton" onClick={logIn}> Log In </button>
+							</div>
+						</div>
+					</div>
+				</div>
+    </>)}
+      
+    </div>
   );
 }
 

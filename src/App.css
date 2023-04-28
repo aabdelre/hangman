@@ -1,3 +1,12 @@
+:root {
+  --primary: #D81E5B;
+  --secondary: #BA4EFC;
+  --dark: #131A26;
+  --dark-alt: #202B3E;
+  --light: #EEEE;
+  --light-alt: #61759B;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -16,6 +25,7 @@ body, #root {
 
 h1 {
   margin: 20px 0 0;
+  align-items: center;
 }
 
 .game-container {
@@ -24,6 +34,7 @@ h1 {
   margin: auto;
   height: 350px;
   width: 450px;
+  align-items: center;
 }
 
 .figure-container {
@@ -31,10 +42,12 @@ h1 {
   stroke: #fff;
   stroke-width: 4px;
   stroke-linecap: round;
+  align-items: center;
 }
 
 .figure-part {
   display: none;
+  align-items: center;
 }
 
 .wrong-letters-container {
@@ -127,4 +140,56 @@ h1 {
 
 .notification-container.show {
   transform: translateY(-50px);
+}
+
+.signout-button {
+    padding: 16px 32px;
+    border-radius: 99px;
+    background-image: linear-gradient(to right, var(--primary), var(--secondary));
+    display: inline-block;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.logbutton {
+    padding: 16px 32px;
+    border-radius: 99px;
+    background-image: linear-gradient(to right, var(--primary), var(--secondary));
+    display: inline-block;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.username {
+    appearance: none;
+    border: none;
+    outline: none;
+    background-color: #FFF;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    font-size: 20px;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 32px;
+}
+
+h4 {
+    font-size: 18px;
+    color: var(--light-alt);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 16px;
 }
