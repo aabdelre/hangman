@@ -5,6 +5,7 @@ import WrongLetters from './components/WrongLetters';
 import Word from './components/Word';
 import Popup from './components/Popup';
 import Notification from './components/Notification';
+import Board from './components/Board';
 import { showNotification as show, checkWin } from './helpers/helpers';
 
 import './App.css';
@@ -74,14 +75,12 @@ function App() {
   function normalMode() {
     setCorrectLetters([]);
     setWrongLetters([]);
-    //playAgain();
     setMode(true);
   }
 
   function uniqueMode() {
     setCorrectLetters([]);
     setWrongLetters([]);
-    //playAgain();
     setMode(true);
     selectedWord = potentialWord.toLowerCase();
   }
@@ -94,6 +93,7 @@ function App() {
         <Word selectedWord={selectedWord} correctLetters={correctLetters}/>
     </div>
     <button className="signout-button" onClick={signOut}> Sign Out </button>
+    <Board></Board>
     <Popup correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain}/>
     <Notification showNotification={showNotification}/></>) : (<>
     
