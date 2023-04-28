@@ -19,6 +19,8 @@ function App() {
   const [showNotification, setShowNotification] = useState(false);
   const [user, setUser] = useState("");
   const [login, setLogin] = useState(false);
+  const [mode, setMode] = useState(false);
+  const [potentialWord, setPotentialWord] = useState("");
 
   useEffect(() => {
     const handleKeydown = event => {
@@ -59,6 +61,9 @@ function App() {
   function signOut() {
     playAgain();
     setLogin(false);
+    setUser("");
+    setPotentialWord("");
+    setMode(false);
   }
 
   function logIn() {
@@ -66,16 +71,40 @@ function App() {
     setLogin(true);
   }
 
+  function normalMode() {
+    setCorrectLetters([]);
+    setWrongLetters([]);
+    //playAgain();
+    setMode(true);
+  }
+
+  function uniqueMode() {
+    setCorrectLetters([]);
+    setWrongLetters([]);
+    //playAgain();
+    setMode(true);
+    selectedWord = potentialWord.toLowerCase();
+  }
+
   return (
-    <div> {login ? (<><Header user={user}/>
+    <div> {login ? (<>{mode ? (<><Header user={user}/>
     <div className="game-container">
-        <Figure wrongLetters={wrongLetters} />
-        <WrongLetters wrongLetters={wrongLetters} />
-        <Word selectedWord={selectedWord} correctLetters={correctLetters} />
+        <Figure wrongLetters={wrongLetters}/>
+        <WrongLetters wrongLetters={wrongLetters}/>
+        <Word selectedWord={selectedWord} correctLetters={correctLetters}/>
     </div>
     <button className="signout-button" onClick={signOut}> Sign Out </button>
-    <Popup correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain} />
-    <Notification showNotification={showNotification} /></>) : (<>
+    <Popup correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain}/>
+    <Notification showNotification={showNotification}/></>) : (<>
+    
+        <h4>Enter the hidden word or play normally!</h4>
+        <form>
+			<input type="text" className="username" onChange={e => setPotentialWord(e.target.value)} value={potentialWord}></input>
+		</form>
+        <button className="signout-button" onClick={uniqueMode}> Select Word </button>
+        <button className="signout-button" onClick={normalMode}> Normal </button>
+    
+    </>)}</>) : (<>
         <div className="login">
 					<div className="auth-container"> 
 						<h4>Enter your Username!</h4>
