@@ -22,7 +22,17 @@ function App() {
   const [login, setLogin] = useState(false);
   const [mode, setMode] = useState(false);
   const [potentialWord, setPotentialWord] = useState("");
-  const [objList, setObjList] = useState([]);
+  var [objList, setObjList] = useState([]);
+
+  //localStorage.clear();
+  //var curObjList = [];
+  if(localStorage.getItem("Users")) {
+    objList = JSON.parse(localStorage.getItem("Users"));
+    console.log(objList);
+  }
+
+  //console.log(objList);
+  //window.localStorage.setItem("Users", JSON.stringify(objList));
 
   useEffect(() => {
     const handleKeydown = event => {
@@ -99,7 +109,8 @@ function App() {
             entry.score = parseInt(entry.score) + 1;
             console.log(entry.score);
         }
-    }) 
+    })
+    window.localStorage.setItem("Users", JSON.stringify(objList));
   }
 
   function normalMode() {
@@ -123,7 +134,7 @@ function App() {
         <Word selectedWord={selectedWord} correctLetters={correctLetters}/>
     </div>
     <button className="signout-button" onClick={signOut}> Sign Out </button>
-    <Board></Board>
+    <Board objList={objList}></Board>
     <Popup correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable} playAgain={playAgain}/>
     <Notification showNotification={showNotification}/></>) : (<>
     

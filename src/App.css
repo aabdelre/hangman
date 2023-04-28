@@ -23,10 +23,10 @@ body, #root {
   overflow: hidden;
 }
 
-.board {
+.table {
     position: absolute;
     top: 50%;
-    transform: translate(600%, -700%);
+    transform: translate(500%, -50%);
     padding: 10px;
 }
 

@@ -1,11 +1,24 @@
 import React from "react";
-import Profiles from "./Profiles";
 
-export default function Board() {
-    return (<>
-        <div className="board">Leaderboard</div>
+const Board = ({objList}) => {
 
-        <Profiles></Profiles>
-        </>
+    return (<table className="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {objList.map((row, index) => (
+                <tr key={index}>
+                    <td>{row.name}</td>
+                    <td>{row.score}</td>
+                </tr>
+            ))}
+        </tbody>
+    </table>  
     )
 }
+
+export default Board
